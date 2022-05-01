@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .text-field{
+    @apply rounded-md border-gray-300 border-2 w-full text-lg mb-3 py-2 px-3 focus:bg-yellow-100 focus:outline-none
+  }
+}
