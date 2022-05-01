@@ -8,6 +8,7 @@ import {
 	signInWithPopup,
 } from "firebase/auth";
 import { auth, provider } from "../../firebase-config";
+import { FcGoogle } from "react-icons/fc";
 
 // As we aren't using any statevariables local to the componenet, this function is not needed to be here, this can be in some other directory and can be exported
 

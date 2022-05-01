@@ -15,6 +15,7 @@ const App = () => {
 	const [user, setUser] = useState("");
 
 	onAuthStateChanged(auth, (currentUser) => {
+		console.log("current user", currentUser);
 		setUser(currentUser);
 	});
 
@@ -34,7 +35,9 @@ const App = () => {
 					<button onClick={logout}>Logout</button>
 				</button>
 				{/* Null checking: If the user is full get the email otherwise don't do anything. */}
+				<div>{user?.displayName}</div>
 				<div>{user?.email}</div>
+				<img src={user?.photoURL} alt={user?.displayName} />
 			</div>
 		</>
 	);
