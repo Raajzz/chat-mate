@@ -2,8 +2,23 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { AiOutlineMail, AiOutlineKey } from "react-icons/ai";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../../firebase-config";
+import {
+	signInWithEmailAndPassword,
+	signOut,
+	signInWithPopup,
+} from "firebase/auth";
+import { auth, provider } from "../../firebase-config";
+
+// As we aren't using any statevariables local to the componenet, this function is not needed to be here, this can be in some other directory and can be exported
+
+const signInWithGoogle = async () => {
+	try {
+		const result = await signInWithPopup(auth, provider);
+		console.log(result);
+	} catch (error) {
+		console.log(error.message);
+	}
+};
 
 const Login = () => {
 	const [userEmail, setUserEmail] = useState("");
@@ -39,6 +54,12 @@ const Login = () => {
 					<div className=" text-center mb-3 text-xl text-violet-600 font-bold">
 						Login to chat-mate!
 					</div>
+					<button
+						className="w-96 bg-white h-fit p-3 my-4 text-center rounded-sm"
+						onClick={signInWithGoogle}
+					>
+						Sign in with Google
+					</button>
 					<div className=" w-96 bg-white h-fit p-3 rounded-sm">
 						{/* enter email text field */}
 						<div>
